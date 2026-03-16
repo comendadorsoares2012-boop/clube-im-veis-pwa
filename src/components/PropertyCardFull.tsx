@@ -1,4 +1,4 @@
-import { Heart, Bed, Bath, Maximize, ArrowRight, Car } from "lucide-react";
+import { Heart, Bed, Bath, Maximize, ArrowRight, Car, Crown } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +15,8 @@ export interface PropertyCardFullProps {
   baths: number;
   area: number;
   parking?: number;
+  premium?: boolean;
+  onFavoriteToggle?: (liked: boolean) => void;
 }
 
 const PropertyCardFull = ({
@@ -29,16 +31,32 @@ const PropertyCardFull = ({
   baths,
   area,
   parking,
+  premium = false,
+  onFavoriteToggle,
 }: PropertyCardFullProps) => {
   const [liked, setLiked] = useState(false);
   const navigate = useNavigate();
+
+  const handleFavorite = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const next = !liked;
+    setLiked(next);
+    onFavoriteToggle?.(next);
+  };
 
   return (
     <motion.div
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2, ease: [0.2, 0, 0, 1] }}
-      className="group relative flex flex-col rounded-2xl bg-card p-2 shadow-card ring-1 ring-foreground/5 transition-shadow hover:shadow-card-hover"
+      className={`group relative flex flex-col rounded-2xl bg-card p-2 shadow-card ring-1 transition-shadow hover:shadow-card-hover ${
+        premium ? "ring-primary/30" : "ring-foreground/5"
+      }`}
     >
+      {/* Premium glow */}
+      {premium && (
+        <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-b from-primary/10 via-transparent to-transparent" />
+      )}
+
       {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-secondary">
         <img
@@ -48,6 +66,12 @@ const PropertyCardFull = ({
           loading="lazy"
         />
         <div className="absolute left-3 top-3 flex gap-1.5">
+          {premium && (
+            <span className="flex items-center gap-1 rounded-lg bg-primary px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
+              <Crown className="h-3 w-3" />
+              Destaque
+            </span>
+          )}
           <span className="rounded-lg bg-foreground px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
             {type}
           </span>
@@ -57,10 +81,7 @@ const PropertyCardFull = ({
         </div>
         <motion.button
           whileTap={{ scale: 0.85 }}
-          onClick={(e) => {
-            e.stopPropagation();
-            setLiked(!liked);
-          }}
+          onClick={handleFavorite}
           className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-card/80 backdrop-blur-sm transition-colors"
         >
           <Heart
@@ -110,7 +131,11 @@ const PropertyCardFull = ({
         <motion.button
           whileTap={{ scale: 0.97 }}
           onClick={() => navigate(`/imovel/${id || 1}`)}
-          className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-foreground py-2.5 text-xs font-semibold text-primary-foreground transition-colors hover:bg-foreground/90"
+          className={`mt-3 flex w-full items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold transition-colors ${
+            premium
+              ? "bg-primary text-primary-foreground hover:bg-primary/90"
+              : "bg-foreground text-primary-foreground hover:bg-foreground/90"
+          }`}
         >
           Ver Detalhes
           <ArrowRight className="h-3.5 w-3.5" />
