@@ -8,7 +8,7 @@ const PlaceholderDashboardPage = ({ title }: { title: string }) => (
         <p className="mt-1 text-sm text-muted-foreground">Em breve</p>
       </div>
     </div>
-  </DashboardLayout>
+  </DashboardShell>
 );
 
 export const LeadsPage = () => <PlaceholderDashboardPage title="Interessados" />;
