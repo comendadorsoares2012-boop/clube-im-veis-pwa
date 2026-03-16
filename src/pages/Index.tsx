@@ -38,6 +38,7 @@ const bannerSlides = [
 
 const allProperties = [
   {
+    id: "1",
     image: property1,
     type: "Venda" as const,
     propertyType: "Casa",
