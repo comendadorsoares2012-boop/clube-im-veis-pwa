@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
+import PhotoUpload, { type PhotoItem } from "@/components/PhotoUpload";
 
 const propertyTypes = [
   { value: "house", label: "Casa", icon: Home },
