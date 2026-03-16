@@ -109,6 +109,7 @@ const PropertyCardFull = ({
 
         <motion.button
           whileTap={{ scale: 0.97 }}
+          onClick={() => navigate(`/imovel/${id || 1}`)}
           className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-foreground py-2.5 text-xs font-semibold text-primary-foreground transition-colors hover:bg-foreground/90"
         >
           Ver Detalhes
