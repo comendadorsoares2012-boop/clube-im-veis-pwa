@@ -134,6 +134,7 @@ const PAGE_SIZE = 12;
 
 // ── Component ─────────────────────────────────────────
 const SearchPage = () => {
+  const { isFavorite, toggleFavorite } = useFavoritesContext();
   const [filters, setFilters] = useState<Filters>(defaultFilters);
   const [showFilters, setShowFilters] = useState(false);
   const [sort, setSort] = useState<SortOption>("newest");
