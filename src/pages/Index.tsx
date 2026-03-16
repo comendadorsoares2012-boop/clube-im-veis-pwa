@@ -225,7 +225,7 @@ const Index = () => {
             <HorizontalScroll>
               {featured.map((p, i) => (
                 <div key={`feat-${i}`} className="w-[280px] shrink-0 snap-start md:w-[320px]">
-                  <PropertyCardFull {...p} />
+                  <PropertyCardFull {...p} liked={isFavorite(p.id)} onFavoriteToggle={() => toggleFavorite(p.id)} />
                 </div>
               ))}
             </HorizontalScroll>
