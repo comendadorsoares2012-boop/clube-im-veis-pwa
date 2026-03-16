@@ -39,9 +39,7 @@ const PropertyCardFull = ({
 
   const handleFavorite = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const next = !liked;
-    setLiked(next);
-    onFavoriteToggle?.(next);
+    onFavoriteToggle?.();
   };
 
   return (
