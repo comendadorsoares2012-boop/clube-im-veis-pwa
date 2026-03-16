@@ -32,9 +32,9 @@ const PropertyCardFull = ({
   area,
   parking,
   premium = false,
+  liked = false,
   onFavoriteToggle,
 }: PropertyCardFullProps) => {
-  const [liked, setLiked] = useState(false);
   const navigate = useNavigate();
 
   const handleFavorite = (e: React.MouseEvent) => {
