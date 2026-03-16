@@ -5,6 +5,7 @@ import BottomNav from "@/components/BottomNav";
 import BannerCarousel from "@/components/BannerCarousel";
 import PropertySearchBar, { SearchFilters } from "@/components/PropertySearchBar";
 import PropertyCardFull from "@/components/PropertyCardFull";
+import { useFavoritesContext } from "@/contexts/FavoritesContext";
 import SectionHeader from "@/components/SectionHeader";
 import NeighborhoodGrid from "@/components/NeighborhoodGrid";
 
@@ -187,6 +188,7 @@ const HorizontalScroll = ({
 };
 
 const Index = () => {
+  const { isFavorite, toggleFavorite } = useFavoritesContext();
   const [filters, setFilters] = useState<SearchFilters>({
     mode: "comprar",
     neighborhood: "Todos",
@@ -223,7 +225,7 @@ const Index = () => {
             <HorizontalScroll>
               {featured.map((p, i) => (
                 <div key={`feat-${i}`} className="w-[280px] shrink-0 snap-start md:w-[320px]">
-                  <PropertyCardFull {...p} />
+                  <PropertyCardFull {...p} liked={isFavorite(p.id)} onFavoriteToggle={() => toggleFavorite(p.id)} />
                 </div>
               ))}
             </HorizontalScroll>
@@ -239,7 +241,7 @@ const Index = () => {
           />
           <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {recent.map((p, i) => (
-              <PropertyCardFull key={`recent-${i}`} {...p} />
+              <PropertyCardFull key={`recent-${i}`} {...p} liked={isFavorite(p.id)} onFavoriteToggle={() => toggleFavorite(p.id)} />
             ))}
           </div>
         </section>

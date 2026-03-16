@@ -15,6 +15,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import PropertyCardFull, { PropertyCardFullProps } from "@/components/PropertyCardFull";
+import { useFavoritesContext } from "@/contexts/FavoritesContext";
 
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
@@ -133,6 +134,7 @@ const PAGE_SIZE = 12;
 
 // ── Component ─────────────────────────────────────────
 const SearchPage = () => {
+  const { isFavorite, toggleFavorite } = useFavoritesContext();
   const [filters, setFilters] = useState<Filters>(defaultFilters);
   const [showFilters, setShowFilters] = useState(false);
   const [sort, setSort] = useState<SortOption>("newest");
@@ -438,7 +440,7 @@ const SearchPage = () => {
         {/* Results grid */}
         <section className="mt-4 grid grid-cols-1 gap-4 px-4 md:grid-cols-2 lg:grid-cols-3">
           {visible.map((p, i) => (
-            <PropertyCardFull key={`search-${i}`} {...p} />
+            <PropertyCardFull key={`search-${i}`} {...p} liked={isFavorite(String(p.id || i))} onFavoriteToggle={() => toggleFavorite(String(p.id || i))} />
           ))}
         </section>
 

@@ -1,6 +1,5 @@
 import { Heart, Bed, Bath, Maximize, ArrowRight, Car, Crown } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export interface PropertyCardFullProps {
@@ -16,7 +15,8 @@ export interface PropertyCardFullProps {
   area: number;
   parking?: number;
   premium?: boolean;
-  onFavoriteToggle?: (liked: boolean) => void;
+  liked?: boolean;
+  onFavoriteToggle?: () => void;
 }
 
 const PropertyCardFull = ({
@@ -32,16 +32,14 @@ const PropertyCardFull = ({
   area,
   parking,
   premium = false,
+  liked = false,
   onFavoriteToggle,
 }: PropertyCardFullProps) => {
-  const [liked, setLiked] = useState(false);
   const navigate = useNavigate();
 
   const handleFavorite = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const next = !liked;
-    setLiked(next);
-    onFavoriteToggle?.(next);
+    onFavoriteToggle?.();
   };
 
   return (

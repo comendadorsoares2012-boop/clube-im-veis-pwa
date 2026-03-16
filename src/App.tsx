@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import Index from "./pages/Index.tsx";
 import SearchPage from "./pages/SearchPage.tsx";
 import PropertyDetailPage from "./pages/PropertyDetailPage.tsx";
@@ -12,7 +13,8 @@ import RegisterPage from "./pages/RegisterPage.tsx";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage.tsx";
 import ResetPasswordPage from "./pages/ResetPasswordPage.tsx";
 import AnunciarPage from "./pages/AnunciarPage.tsx";
-import { FavoritosPage, PerfilPage } from "./pages/PlaceholderPages.tsx";
+import FavoritosPage from "./pages/FavoritosPage.tsx";
+import { PerfilPage } from "./pages/PlaceholderPages.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -20,6 +22,7 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
+      <FavoritesProvider>
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -39,6 +42,7 @@ const App = () => (
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
+      </FavoritesProvider>
     </AuthProvider>
   </QueryClientProvider>
 );
