@@ -255,57 +255,7 @@ const AnunciarPage = () => {
           </div>
 
           {/* Photos */}
-          <div className="space-y-2">
-            <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              Fotos ({photos.length}/10)
-            </Label>
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
-              <AnimatePresence mode="popLayout">
-                {photos.map((photo, i) => (
-                  <motion.div
-                    key={photo.preview}
-                    layout
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    className="group relative aspect-square overflow-hidden rounded-xl border border-input"
-                  >
-                    <img
-                      src={photo.preview}
-                      alt={`Foto ${i + 1}`}
-                      className="h-full w-full object-cover"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => removePhoto(i)}
-                      className="absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-foreground/70 text-background opacity-0 transition-opacity group-hover:opacity-100"
-                    >
-                      <X className="h-3.5 w-3.5" />
-                    </button>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-
-              {photos.length < 10 && (
-                <button
-                  type="button"
-                  onClick={() => fileInputRef.current?.click()}
-                  className="flex aspect-square flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-input text-muted-foreground transition-colors hover:border-primary hover:text-primary"
-                >
-                  <Camera className="h-6 w-6" />
-                  <span className="text-[10px] font-medium">Adicionar</span>
-                </button>
-              )}
-            </div>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              multiple
-              className="hidden"
-              onChange={handlePhotoUpload}
-            />
-          </div>
+          <PhotoUpload photos={photos} onChange={setPhotos} max={10} />
 
           {/* Submit */}
           <Button
