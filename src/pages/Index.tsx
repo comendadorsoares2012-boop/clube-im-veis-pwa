@@ -241,7 +241,7 @@ const Index = () => {
           />
           <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {recent.map((p, i) => (
-              <PropertyCardFull key={`recent-${i}`} {...p} />
+              <PropertyCardFull key={`recent-${i}`} {...p} liked={isFavorite(p.id)} onFavoriteToggle={() => toggleFavorite(p.id)} />
             ))}
           </div>
         </section>
