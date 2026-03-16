@@ -77,7 +77,7 @@ const MyPropertiesPage = () => {
   const expiredCount = properties.filter((p) => p.status === "expired").length;
 
   return (
-    <DashboardLayout title="Meus Imóveis">
+    <DashboardShell title="Meus Imóveis" variant="owner">
       <div className="mx-auto max-w-5xl space-y-5">
         {/* Expired notification */}
         {expiredCount > 0 && (
