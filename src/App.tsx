@@ -15,6 +15,9 @@ import ResetPasswordPage from "./pages/ResetPasswordPage.tsx";
 import AnunciarPage from "./pages/AnunciarPage.tsx";
 import FavoritosPage from "./pages/FavoritosPage.tsx";
 import { PerfilPage } from "./pages/PlaceholderPages.tsx";
+import DashboardOverview from "./pages/dashboard/DashboardOverview.tsx";
+import MyPropertiesPage from "./pages/dashboard/MyPropertiesPage.tsx";
+import { LeadsPage, PlansPage, DashboardProfilePage } from "./pages/dashboard/DashboardPlaceholders.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -38,6 +41,11 @@ const App = () => (
             <Route path="/anunciar" element={<AnunciarPage />} />
             <Route path="/favoritos" element={<FavoritosPage />} />
             <Route path="/perfil" element={<PerfilPage />} />
+            <Route path="/dashboard" element={<DashboardOverview />} />
+            <Route path="/dashboard/imoveis" element={<MyPropertiesPage />} />
+            <Route path="/dashboard/leads" element={<LeadsPage />} />
+            <Route path="/dashboard/planos" element={<PlansPage />} />
+            <Route path="/dashboard/perfil" element={<DashboardProfilePage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
