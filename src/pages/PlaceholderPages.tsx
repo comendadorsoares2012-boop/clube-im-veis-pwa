@@ -15,6 +15,5 @@ const PlaceholderPage = ({ title }: { title: string }) => (
 );
 
 export const AnunciarPage = () => <PlaceholderPage title="Anunciar Imóvel" />;
-export const AnunciarPage = () => <PlaceholderPage title="Anunciar Imóvel" />;
 export const FavoritosPage = () => <PlaceholderPage title="Meus Favoritos" />;
 export const PerfilPage = () => <PlaceholderPage title="Meu Perfil" />;
