@@ -1,8 +1,8 @@
-import { Heart, Bed, Bath, Maximize, ArrowRight } from "lucide-react";
+import { Heart, Bed, Bath, Maximize, ArrowRight, Car } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-interface PropertyCardFullProps {
+export interface PropertyCardFullProps {
   image: string;
   type: "Venda" | "Aluguel";
   propertyType: string;
@@ -12,6 +12,7 @@ interface PropertyCardFullProps {
   beds: number;
   baths: number;
   area: number;
+  parking?: number;
 }
 
 const PropertyCardFull = ({
@@ -24,6 +25,7 @@ const PropertyCardFull = ({
   beds,
   baths,
   area,
+  parking,
 }: PropertyCardFullProps) => {
   const [liked, setLiked] = useState(false);
 
@@ -67,7 +69,6 @@ const PropertyCardFull = ({
 
       {/* Content */}
       <div className="flex flex-1 flex-col px-2 pb-2 pt-3">
-        {/* Price - gold accent */}
         <div className="flex items-baseline gap-1">
           <span className="text-xs font-medium text-primary">R$</span>
           <span className="text-xl font-bold tabular-nums tracking-display text-primary">
@@ -85,7 +86,6 @@ const PropertyCardFull = ({
           {neighborhood}, Nova Iguaçu
         </p>
 
-        {/* Specs */}
         <div className="mt-3 flex items-center gap-3 border-t border-foreground/5 pt-3">
           <span className="flex items-center gap-1 text-xs font-medium text-muted-foreground">
             <Bed className="h-3.5 w-3.5" /> {beds}
@@ -93,12 +93,16 @@ const PropertyCardFull = ({
           <span className="flex items-center gap-1 text-xs font-medium text-muted-foreground">
             <Bath className="h-3.5 w-3.5" /> {baths}
           </span>
+          {parking !== undefined && (
+            <span className="flex items-center gap-1 text-xs font-medium text-muted-foreground">
+              <Car className="h-3.5 w-3.5" /> {parking}
+            </span>
+          )}
           <span className="flex items-center gap-1 text-xs font-medium text-muted-foreground">
             <Maximize className="h-3.5 w-3.5" /> {area}m²
           </span>
         </div>
 
-        {/* CTA */}
         <motion.button
           whileTap={{ scale: 0.97 }}
           className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-foreground py-2.5 text-xs font-semibold text-primary-foreground transition-colors hover:bg-foreground/90"
