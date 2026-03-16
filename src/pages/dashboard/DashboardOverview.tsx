@@ -89,7 +89,7 @@ const DashboardOverview = () => {
           Publicar Novo Imóvel
         </Button>
       </div>
-    </DashboardLayout>
+    </DashboardShell>
   );
 };
 

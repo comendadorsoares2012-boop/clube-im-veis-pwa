@@ -209,7 +209,7 @@ const MyPropertiesPage = () => {
           </AnimatePresence>
         </div>
       </div>
-    </DashboardLayout>
+    </DashboardShell>
   );
 };
 
