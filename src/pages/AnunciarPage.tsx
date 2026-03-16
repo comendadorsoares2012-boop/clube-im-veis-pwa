@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { Camera, X, Plus, Home, Building2, Store, TreePine, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+import { Home, Building2, Store, TreePine, Sparkles } from "lucide-react";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
+import PhotoUpload, { type PhotoItem } from "@/components/PhotoUpload";
 
 const propertyTypes = [
   { value: "house", label: "Casa", icon: Home },
@@ -28,7 +29,6 @@ const neighborhoods = [
 const AnunciarPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [purpose, setPurpose] = useState<"sale" | "rent">("sale");
   const [propertyType, setPropertyType] = useState("");
@@ -39,30 +39,11 @@ const AnunciarPage = () => {
   const [parking, setParking] = useState("");
   const [area, setArea] = useState("");
   const [description, setDescription] = useState("");
-  const [photos, setPhotos] = useState<{ file: File; preview: string }[]>([]);
+  const [photos, setPhotos] = useState<PhotoItem[]>([]);
   const [submitting, setSubmitting] = useState(false);
 
-  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || []);
-    const remaining = 10 - photos.length;
-    if (remaining <= 0) {
-      toast.error("Máximo de 10 fotos permitidas.");
-      return;
-    }
-    const newPhotos = files.slice(0, remaining).map((file) => ({
-      file,
-      preview: URL.createObjectURL(file),
-    }));
-    setPhotos((prev) => [...prev, ...newPhotos]);
-    if (fileInputRef.current) fileInputRef.current.value = "";
-  };
 
-  const removePhoto = (index: number) => {
-    setPhotos((prev) => {
-      URL.revokeObjectURL(prev[index].preview);
-      return prev.filter((_, i) => i !== index);
-    });
-  };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -261,57 +242,7 @@ const AnunciarPage = () => {
           </div>
 
           {/* Photos */}
-          <div className="space-y-2">
-            <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              Fotos ({photos.length}/10)
-            </Label>
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
-              <AnimatePresence mode="popLayout">
-                {photos.map((photo, i) => (
-                  <motion.div
-                    key={photo.preview}
-                    layout
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    className="group relative aspect-square overflow-hidden rounded-xl border border-input"
-                  >
-                    <img
-                      src={photo.preview}
-                      alt={`Foto ${i + 1}`}
-                      className="h-full w-full object-cover"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => removePhoto(i)}
-                      className="absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-foreground/70 text-background opacity-0 transition-opacity group-hover:opacity-100"
-                    >
-                      <X className="h-3.5 w-3.5" />
-                    </button>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-
-              {photos.length < 10 && (
-                <button
-                  type="button"
-                  onClick={() => fileInputRef.current?.click()}
-                  className="flex aspect-square flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-input text-muted-foreground transition-colors hover:border-primary hover:text-primary"
-                >
-                  <Camera className="h-6 w-6" />
-                  <span className="text-[10px] font-medium">Adicionar</span>
-                </button>
-              )}
-            </div>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              multiple
-              className="hidden"
-              onChange={handlePhotoUpload}
-            />
-          </div>
+          <PhotoUpload photos={photos} onChange={setPhotos} max={10} />
 
           {/* Submit */}
           <Button
