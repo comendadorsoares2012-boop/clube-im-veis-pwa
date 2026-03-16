@@ -18,6 +18,11 @@ import { PerfilPage } from "./pages/PlaceholderPages.tsx";
 import DashboardOverview from "./pages/dashboard/DashboardOverview.tsx";
 import MyPropertiesPage from "./pages/dashboard/MyPropertiesPage.tsx";
 import { LeadsPage, PlansPage, DashboardProfilePage } from "./pages/dashboard/DashboardPlaceholders.tsx";
+import AgentDashboard from "./pages/agent/AgentDashboard.tsx";
+import AgentListings from "./pages/agent/AgentListings.tsx";
+import AgentLeads from "./pages/agent/AgentLeads.tsx";
+import AgentReports from "./pages/agent/AgentReports.tsx";
+import { AgentPlans, AgentProfile } from "./pages/agent/AgentPlaceholders.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
