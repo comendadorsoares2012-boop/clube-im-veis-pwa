@@ -122,6 +122,7 @@ const allProperties = [
     recent: true,
   },
   {
+    id: "7",
     image: property1,
     type: "Aluguel" as const,
     propertyType: "Casa",
