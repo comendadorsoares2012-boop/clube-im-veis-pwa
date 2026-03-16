@@ -18,6 +18,11 @@ import { PerfilPage } from "./pages/PlaceholderPages.tsx";
 import DashboardOverview from "./pages/dashboard/DashboardOverview.tsx";
 import MyPropertiesPage from "./pages/dashboard/MyPropertiesPage.tsx";
 import { LeadsPage, PlansPage, DashboardProfilePage } from "./pages/dashboard/DashboardPlaceholders.tsx";
+import AgentDashboard from "./pages/agent/AgentDashboard.tsx";
+import AgentListings from "./pages/agent/AgentListings.tsx";
+import AgentLeads from "./pages/agent/AgentLeads.tsx";
+import AgentReports from "./pages/agent/AgentReports.tsx";
+import { AgentPlans, AgentProfile } from "./pages/agent/AgentPlaceholders.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -46,6 +51,12 @@ const App = () => (
             <Route path="/dashboard/leads" element={<LeadsPage />} />
             <Route path="/dashboard/planos" element={<PlansPage />} />
             <Route path="/dashboard/perfil" element={<DashboardProfilePage />} />
+            <Route path="/agente" element={<AgentDashboard />} />
+            <Route path="/agente/anuncios" element={<AgentListings />} />
+            <Route path="/agente/leads" element={<AgentLeads />} />
+            <Route path="/agente/relatorios" element={<AgentReports />} />
+            <Route path="/agente/planos" element={<AgentPlans />} />
+            <Route path="/agente/perfil" element={<AgentProfile />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

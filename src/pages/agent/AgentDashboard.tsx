@@ -3,58 +3,29 @@ import {
   Building2,
   CheckCircle2,
   Clock,
-  Eye,
   Users,
+  TrendingUp,
   Plus,
-  AlertTriangle,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import DashboardShell from "@/components/dashboard/DashboardShell";
 import { Button } from "@/components/ui/button";
 
 const stats = [
-  { label: "Total de Imóveis", value: "12", icon: Building2, color: "text-foreground" },
-  { label: "Imóveis Ativos", value: "8", icon: CheckCircle2, color: "text-emerald-500" },
-  { label: "Expirados", value: "3", icon: Clock, color: "text-destructive" },
-  { label: "Visualizações", value: "1.847", icon: Eye, color: "text-primary" },
-  { label: "Interessados", value: "34", icon: Users, color: "text-blue-500" },
+  { label: "Total de Imóveis", value: "47", icon: Building2, color: "text-foreground" },
+  { label: "Anúncios Ativos", value: "38", icon: CheckCircle2, color: "text-emerald-500" },
+  { label: "Expirados", value: "5", icon: Clock, color: "text-destructive" },
+  { label: "Leads Recebidos", value: "214", icon: Users, color: "text-primary" },
+  { label: "Taxa de Conversão", value: "12%", icon: TrendingUp, color: "text-blue-500" },
 ];
 
-const DashboardOverview = () => {
+const AgentDashboard = () => {
   const navigate = useNavigate();
-  const hasExpired = true; // mock
 
   return (
-    <DashboardShell title="Dashboard" variant="owner">
+    <DashboardShell title="Dashboard" variant="agent">
       <div className="mx-auto max-w-5xl space-y-6">
-        {/* Expired banner */}
-        {hasExpired && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex items-start gap-3 rounded-2xl border border-destructive/20 bg-destructive/5 px-4 py-3"
-          >
-            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
-            <div>
-              <p className="text-sm font-semibold text-foreground">
-                Imóveis expirados
-              </p>
-              <p className="mt-0.5 text-xs text-muted-foreground">
-                Seu anúncio expirou. Reative para continuar recebendo interessados.
-              </p>
-            </div>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() => navigate("/dashboard/imoveis")}
-              className="ml-auto shrink-0 rounded-lg border-destructive/30 text-xs text-destructive hover:bg-destructive/10"
-            >
-              Ver imóveis
-            </Button>
-          </motion.div>
-        )}
-
-        {/* Stats grid */}
+        {/* Stats */}
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {stats.map((stat, i) => {
             const Icon = stat.icon;
@@ -93,4 +64,4 @@ const DashboardOverview = () => {
   );
 };
 
-export default DashboardOverview;
+export default AgentDashboard;
