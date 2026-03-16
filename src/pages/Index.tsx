@@ -188,6 +188,7 @@ const HorizontalScroll = ({
 };
 
 const Index = () => {
+  const { isFavorite, toggleFavorite } = useFavoritesContext();
   const [filters, setFilters] = useState<SearchFilters>({
     mode: "comprar",
     neighborhood: "Todos",
