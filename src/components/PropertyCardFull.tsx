@@ -18,6 +18,7 @@ export interface PropertyCardFullProps {
 }
 
 const PropertyCardFull = ({
+  id,
   image,
   type,
   propertyType,
@@ -30,6 +31,7 @@ const PropertyCardFull = ({
   parking,
 }: PropertyCardFullProps) => {
   const [liked, setLiked] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <motion.div
