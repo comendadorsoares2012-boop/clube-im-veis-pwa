@@ -25,7 +25,7 @@ const DashboardOverview = () => {
   const hasExpired = true; // mock
 
   return (
-    <DashboardLayout title="Dashboard">
+    <DashboardShell title="Dashboard" variant="owner">
       <div className="mx-auto max-w-5xl space-y-6">
         {/* Expired banner */}
         {hasExpired && (
