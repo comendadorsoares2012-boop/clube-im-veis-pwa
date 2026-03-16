@@ -440,7 +440,7 @@ const SearchPage = () => {
         {/* Results grid */}
         <section className="mt-4 grid grid-cols-1 gap-4 px-4 md:grid-cols-2 lg:grid-cols-3">
           {visible.map((p, i) => (
-            <PropertyCardFull key={`search-${i}`} {...p} />
+            <PropertyCardFull key={`search-${i}`} {...p} liked={isFavorite(p.id || String(i))} onFavoriteToggle={() => toggleFavorite(p.id || String(i))} />
           ))}
         </section>
 
