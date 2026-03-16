@@ -20,6 +20,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/buscar" element={<SearchPage />} />
+          <Route path="/imovel/:id" element={<PropertyDetailPage />} />
           <Route path="/anunciar" element={<AnunciarPage />} />
           <Route path="/favoritos" element={<FavoritosPage />} />
           <Route path="/perfil" element={<PerfilPage />} />
