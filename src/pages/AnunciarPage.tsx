@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { Camera, X, Plus, Home, Building2, Store, TreePine, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+import { Home, Building2, Store, TreePine, Sparkles } from "lucide-react";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import { Button } from "@/components/ui/button";
