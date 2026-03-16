@@ -70,4 +70,11 @@
   .tracking-display {
     letter-spacing: -0.02em;
   }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
