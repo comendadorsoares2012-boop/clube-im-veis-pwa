@@ -38,6 +38,7 @@ const bannerSlides = [
 
 const allProperties = [
   {
+    id: "1",
     image: property1,
     type: "Venda" as const,
     propertyType: "Casa",
@@ -51,6 +52,7 @@ const allProperties = [
     recent: false,
   },
   {
+    id: "2",
     image: property2,
     type: "Aluguel" as const,
     propertyType: "Apartamento",
@@ -64,6 +66,7 @@ const allProperties = [
     recent: true,
   },
   {
+    id: "3",
     image: property3,
     type: "Venda" as const,
     propertyType: "Apartamento",
@@ -77,6 +80,7 @@ const allProperties = [
     recent: true,
   },
   {
+    id: "4",
     image: property4,
     type: "Venda" as const,
     propertyType: "Casa",
@@ -90,6 +94,7 @@ const allProperties = [
     recent: true,
   },
   {
+    id: "5",
     image: property5,
     type: "Aluguel" as const,
     propertyType: "Apartamento",
@@ -103,6 +108,7 @@ const allProperties = [
     recent: false,
   },
   {
+    id: "6",
     image: property6,
     type: "Venda" as const,
     propertyType: "Casa",
@@ -116,6 +122,7 @@ const allProperties = [
     recent: true,
   },
   {
+    id: "7",
     image: property1,
     type: "Aluguel" as const,
     propertyType: "Casa",
@@ -129,6 +136,7 @@ const allProperties = [
     recent: true,
   },
   {
+    id: "8",
     image: property3,
     type: "Venda" as const,
     propertyType: "Apartamento",

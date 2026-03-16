@@ -1,8 +1,10 @@
 import { Heart, Bed, Bath, Maximize, ArrowRight, Car } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export interface PropertyCardFullProps {
+  id?: string | number;
   image: string;
   type: "Venda" | "Aluguel";
   propertyType: string;
@@ -16,6 +18,7 @@ export interface PropertyCardFullProps {
 }
 
 const PropertyCardFull = ({
+  id,
   image,
   type,
   propertyType,
@@ -28,6 +31,7 @@ const PropertyCardFull = ({
   parking,
 }: PropertyCardFullProps) => {
   const [liked, setLiked] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <motion.div
@@ -105,6 +109,7 @@ const PropertyCardFull = ({
 
         <motion.button
           whileTap={{ scale: 0.97 }}
+          onClick={() => navigate(`/imovel/${id || 1}`)}
           className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-foreground py-2.5 text-xs font-semibold text-primary-foreground transition-colors hover:bg-foreground/90"
         >
           Ver Detalhes
