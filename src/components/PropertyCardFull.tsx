@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export interface PropertyCardFullProps {
+  id?: string | number;
   image: string;
   type: "Venda" | "Aluguel";
   propertyType: string;
