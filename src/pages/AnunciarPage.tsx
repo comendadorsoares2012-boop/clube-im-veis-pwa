@@ -39,7 +39,7 @@ const AnunciarPage = () => {
   const [parking, setParking] = useState("");
   const [area, setArea] = useState("");
   const [description, setDescription] = useState("");
-  const [photos, setPhotos] = useState<{ file: File; preview: string }[]>([]);
+  const [photos, setPhotos] = useState<PhotoItem[]>([]);
   const [submitting, setSubmitting] = useState(false);
 
   const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
