@@ -15,6 +15,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import PropertyCardFull, { PropertyCardFullProps } from "@/components/PropertyCardFull";
+import { useFavoritesContext } from "@/contexts/FavoritesContext";
 
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";

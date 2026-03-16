@@ -5,6 +5,7 @@ import BottomNav from "@/components/BottomNav";
 import BannerCarousel from "@/components/BannerCarousel";
 import PropertySearchBar, { SearchFilters } from "@/components/PropertySearchBar";
 import PropertyCardFull from "@/components/PropertyCardFull";
+import { useFavoritesContext } from "@/contexts/FavoritesContext";
 import SectionHeader from "@/components/SectionHeader";
 import NeighborhoodGrid from "@/components/NeighborhoodGrid";
 
