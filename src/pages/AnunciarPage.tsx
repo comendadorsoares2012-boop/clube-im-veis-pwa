@@ -42,20 +42,7 @@ const AnunciarPage = () => {
   const [photos, setPhotos] = useState<PhotoItem[]>([]);
   const [submitting, setSubmitting] = useState(false);
 
-  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || []);
-    const remaining = 10 - photos.length;
-    if (remaining <= 0) {
-      toast.error("Máximo de 10 fotos permitidas.");
-      return;
-    }
-    const newPhotos = files.slice(0, remaining).map((file) => ({
-      file,
-      preview: URL.createObjectURL(file),
-    }));
-    setPhotos((prev) => [...prev, ...newPhotos]);
-    if (fileInputRef.current) fileInputRef.current.value = "";
-  };
+
 
 
   const handleSubmit = async (e: React.FormEvent) => {
