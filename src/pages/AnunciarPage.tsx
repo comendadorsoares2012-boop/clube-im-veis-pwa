@@ -29,7 +29,6 @@ const neighborhoods = [
 const AnunciarPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [purpose, setPurpose] = useState<"sale" | "rent">("sale");
   const [propertyType, setPropertyType] = useState("");
