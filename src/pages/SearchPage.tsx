@@ -111,6 +111,7 @@ const generateProperties = (count: number, offset: number = 0): PropertyData[] =
     const area = 40 + Math.floor(Math.random() * 310);
 
     return {
+      id: String(idx + 1),
       image: images[idx % images.length],
       type: purpose,
       propertyType: types[idx % types.length],
