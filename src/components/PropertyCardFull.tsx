@@ -1,6 +1,7 @@
 import { Heart, Bed, Bath, Maximize, ArrowRight, Car } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export interface PropertyCardFullProps {
   image: string;
