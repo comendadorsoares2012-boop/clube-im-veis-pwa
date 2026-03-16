@@ -1,6 +1,5 @@
 import { Heart, Bed, Bath, Maximize, ArrowRight, Car, Crown } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export interface PropertyCardFullProps {
@@ -16,7 +15,8 @@ export interface PropertyCardFullProps {
   area: number;
   parking?: number;
   premium?: boolean;
-  onFavoriteToggle?: (liked: boolean) => void;
+  liked?: boolean;
+  onFavoriteToggle?: () => void;
 }
 
 const PropertyCardFull = ({
