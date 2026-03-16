@@ -57,12 +57,6 @@ const AnunciarPage = () => {
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-  const removePhoto = (index: number) => {
-    setPhotos((prev) => {
-      URL.revokeObjectURL(prev[index].preview);
-      return prev.filter((_, i) => i !== index);
-    });
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
