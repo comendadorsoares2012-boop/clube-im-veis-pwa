@@ -9,9 +9,12 @@ import {
   LogOut,
   Crown,
   BarChart3,
+<<<<<<< HEAD
   Shield,
   MessageSquare,
   Heart,
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 } from "lucide-react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import {
@@ -43,6 +46,7 @@ const ownerMenu: MenuItem[] = [
   { title: "Perfil", url: "/dashboard/perfil", icon: UserCircle },
 ];
 
+<<<<<<< HEAD
 const normalUserMenu: MenuItem[] = [
   { title: "Dashboard", url: "/dashboard/usuario", icon: LayoutDashboard },
   { title: "Favoritos", url: "/dashboard/favoritos", icon: Heart },
@@ -60,6 +64,17 @@ const adminMenu: MenuItem[] = [
 
 import logo from "@/assets/logo.png";
 
+=======
+const agentMenu: MenuItem[] = [
+  { title: "Dashboard", url: "/agente", icon: LayoutDashboard },
+  { title: "Meus Anúncios", url: "/agente/anuncios", icon: Building2 },
+  { title: "Leads", url: "/agente/leads", icon: Users },
+  { title: "Relatórios", url: "/agente/relatorios", icon: BarChart3 },
+  { title: "Planos", url: "/agente/planos", icon: CreditCard },
+  { title: "Perfil", url: "/agente/perfil", icon: UserCircle },
+];
+
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 function DashboardSidebarInner({ menu, subtitle }: { menu: MenuItem[]; subtitle: string }) {
   const { state } = useSidebar();
   const collapsed = state === "collapsed";
@@ -76,12 +91,23 @@ function DashboardSidebarInner({ menu, subtitle }: { menu: MenuItem[]; subtitle:
   return (
     <Sidebar collapsible="icon" className="border-r border-border">
       <SidebarContent>
+<<<<<<< HEAD
         <div className="flex items-center gap-2 px-3 py-5">
           <img src={logo} alt="Logo" className="h-10 w-10 shrink-0 object-contain" />
           {!collapsed && (
             <div className="flex flex-col">
               <span className="text-xs font-bold leading-tight tracking-tight text-foreground">
                 Clube Aqui Tem Imóveis
+=======
+        <div className="flex items-center gap-2 px-4 py-5">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary">
+            <Crown className="h-5 w-5 text-primary-foreground" />
+          </div>
+          {!collapsed && (
+            <div className="flex flex-col">
+              <span className="text-sm font-bold tracking-display text-foreground">
+                Clube Aqui Tem
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
               </span>
               <span className="text-[10px] font-medium text-muted-foreground">
                 {subtitle}
@@ -181,12 +207,17 @@ function DashboardBottomNavInner({ menu }: { menu: MenuItem[] }) {
 interface DashboardShellProps {
   children: ReactNode;
   title?: string;
+<<<<<<< HEAD
   variant?: "owner" | "user" | "admin";
+=======
+  variant?: "owner" | "agent";
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 }
 
 const DashboardShell = ({ children, title, variant = "owner" }: DashboardShellProps) => {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
+<<<<<<< HEAD
   
   const menu = variant === "admin" 
     ? adminMenu 
@@ -209,6 +240,14 @@ const DashboardShell = ({ children, title, variant = "owner" }: DashboardShellPr
       }
     }
   }, [loading, user, navigate, variant]);
+=======
+  const menu = variant === "agent" ? agentMenu : ownerMenu;
+  const subtitle = variant === "agent" ? "Painel do Corretor" : "Painel do Proprietário";
+
+  useEffect(() => {
+    if (!loading && !user) navigate("/login");
+  }, [loading, user, navigate]);
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 
   if (loading) {
     return (

@@ -41,7 +41,11 @@ const AgentLeads = () => {
     phone.replace(/(\(\d{2}\) \d)\d{4}/, "$1****");
 
   return (
+<<<<<<< HEAD
     <DashboardShell title="Leads" variant="owner">
+=======
+    <DashboardShell title="Leads" variant="agent">
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
       <div className="mx-auto max-w-5xl space-y-5">
         {/* Info banner */}
         {!isPremium && (

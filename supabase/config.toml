@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 project_id = "frhlkmivnjtcdidyvfxf"
 [functions.get-rio-news]
 enabled = true
@@ -9,3 +10,6 @@ entrypoint = "./functions/get-rio-news/index.ts"
 # Specifies static files to be bundled with the function. Supports glob patterns.
 # For example, if you want to serve static HTML pages in your function:
 # static_files = [ "./functions/get-rio-news/*.html" ]
+=======
+project_id = "udoxtbhchkxcqugzkexu"
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3

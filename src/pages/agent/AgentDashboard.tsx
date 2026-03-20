@@ -23,7 +23,11 @@ const AgentDashboard = () => {
   const navigate = useNavigate();
 
   return (
+<<<<<<< HEAD
     <DashboardShell title="Dashboard" variant="owner">
+=======
+    <DashboardShell title="Dashboard" variant="agent">
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
       <div className="mx-auto max-w-5xl space-y-6">
         {/* Stats */}
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">

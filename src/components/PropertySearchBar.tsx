@@ -1,6 +1,10 @@
 import { useState } from "react";
+<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
 import { Search, SlidersHorizontal, ChevronDown, X, ArrowRight } from "lucide-react";
+=======
+import { Search, SlidersHorizontal, ChevronDown, X } from "lucide-react";
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 import { motion, AnimatePresence } from "framer-motion";
 
 const neighborhoods = [
@@ -36,11 +40,15 @@ interface PropertySearchBarProps {
 
 const PropertySearchBar = ({ filters, onChange }: PropertySearchBarProps) => {
   const [showFilters, setShowFilters] = useState(false);
+<<<<<<< HEAD
   const navigate = useNavigate();
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 
   const update = (partial: Partial<SearchFilters>) =>
     onChange({ ...filters, ...partial });
 
+<<<<<<< HEAD
   const handleSearch = () => {
     const params = new URLSearchParams();
     if (filters.query) params.append("q", filters.query);
@@ -49,6 +57,8 @@ const PropertySearchBar = ({ filters, onChange }: PropertySearchBarProps) => {
     navigate(`/buscar?${params.toString()}`);
   };
 
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
   return (
     <div className="space-y-3">
       {/* Mode toggle */}
@@ -91,6 +101,7 @@ const PropertySearchBar = ({ filters, onChange }: PropertySearchBarProps) => {
         >
           <SlidersHorizontal className="h-4 w-4" />
         </motion.button>
+<<<<<<< HEAD
         <motion.button
           whileTap={{ scale: 0.95 }}
           onClick={handleSearch}
@@ -98,6 +109,8 @@ const PropertySearchBar = ({ filters, onChange }: PropertySearchBarProps) => {
         >
           <ArrowRight className="h-4 w-4" />
         </motion.button>
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
       </div>
 
       {/* Expandable filters */}

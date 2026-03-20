@@ -13,18 +13,40 @@ import { useNavigate } from "react-router-dom";
 import DashboardShell from "@/components/dashboard/DashboardShell";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+<<<<<<< HEAD
 import { supabase } from "@/integrations/supabase/client";
 import { useEffect } from "react";
 import { useAuth } from "@/contexts/AuthContext";
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
 import property4 from "@/assets/property-4.jpg";
 
+<<<<<<< HEAD
 const statusConfig: Record<string, { label: string; classes: string }> = {
   free: {
     label: "Grátis",
+=======
+type PropertyStatus = "free_trial" | "active" | "premium" | "expired";
+
+interface OwnerProperty {
+  id: string;
+  image: string;
+  price: string;
+  neighborhood: string;
+  address: string;
+  status: PropertyStatus;
+  views: number;
+  leads: number;
+}
+
+const statusConfig: Record<PropertyStatus, { label: string; classes: string }> = {
+  free_trial: {
+    label: "Teste Grátis",
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
     classes: "bg-blue-500/10 text-blue-600 border-blue-500/20",
   },
   active: {
@@ -41,6 +63,7 @@ const statusConfig: Record<string, { label: string; classes: string }> = {
   },
 };
 
+<<<<<<< HEAD
 interface PropertyImage {
   image_url: string;
 }
@@ -111,6 +134,29 @@ const MyPropertiesPage = () => {
     } catch (error: any) {
       toast.error("Erro ao reativar imóvel.");
     }
+=======
+const mockProperties: OwnerProperty[] = [
+  { id: "1", image: property1, price: "850.000", neighborhood: "Centro", address: "Rua das Palmeiras, 120", status: "premium", views: 342, leads: 12 },
+  { id: "2", image: property2, price: "2.800", neighborhood: "Miguel Couto", address: "Av. Gov. Amaral Peixoto, 45", status: "active", views: 189, leads: 5 },
+  { id: "3", image: property3, price: "1.200.000", neighborhood: "Califórnia", address: "Rua Marechal Floriano, 300", status: "free_trial", views: 67, leads: 2 },
+  { id: "4", image: property4, price: "680.000", neighborhood: "Comendador Soares", address: "Rua Bernardino de Melo, 200", status: "expired", views: 510, leads: 18 },
+];
+
+const MyPropertiesPage = () => {
+  const navigate = useNavigate();
+  const [properties, setProperties] = useState(mockProperties);
+
+  const handleDelete = (id: string) => {
+    setProperties((prev) => prev.filter((p) => p.id !== id));
+    toast.success("Imóvel removido com sucesso.");
+  };
+
+  const handleReactivate = (id: string) => {
+    setProperties((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, status: "active" as PropertyStatus } : p))
+    );
+    toast.success("Imóvel reativado com sucesso!");
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
   };
 
   const expiredCount = properties.filter((p) => p.status === "expired").length;
@@ -147,6 +193,7 @@ const MyPropertiesPage = () => {
         </Button>
 
         {/* Property cards */}
+<<<<<<< HEAD
         {loading ? (
           <div className="flex justify-center py-12">
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
@@ -196,6 +243,60 @@ const MyPropertiesPage = () => {
                       </div>
                       <p className="mt-1 text-sm font-medium text-foreground">{prop.title}</p>
                       <p className="text-xs text-muted-foreground">{prop.neighborhood}, Nova Iguaçu</p>
+=======
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
+          <AnimatePresence mode="popLayout">
+            {properties.map((prop, i) => {
+              const status = statusConfig[prop.status];
+              return (
+                <motion.div
+                  key={prop.id}
+                  layout
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ delay: i * 0.04 }}
+                  className={`group overflow-hidden rounded-2xl border bg-card shadow-card ${
+                    prop.status === "expired" ? "border-destructive/20" : "border-border"
+                  }`}
+                >
+                  {/* Image */}
+                  <div className="relative aspect-[16/9] overflow-hidden bg-secondary">
+                    <img
+                      src={prop.image}
+                      alt={prop.address}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    {/* Status badge */}
+                    <span
+                      className={`absolute left-3 top-3 flex items-center gap-1 rounded-lg border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${status.classes}`}
+                    >
+                      {prop.status === "premium" && <Crown className="h-3 w-3" />}
+                      {status.label}
+                    </span>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-4">
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-xs font-medium text-primary">R$</span>
+                      <span className="text-xl font-bold tabular-nums tracking-display text-primary">
+                        {prop.price}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm font-medium text-foreground">{prop.address}</p>
+                    <p className="text-xs text-muted-foreground">{prop.neighborhood}, Nova Iguaçu</p>
+
+                    {/* Mini stats */}
+                    <div className="mt-3 flex gap-4 border-t border-border pt-3">
+                      <span className="text-xs text-muted-foreground">
+                        <span className="font-semibold text-foreground">{prop.views}</span> visualizações
+                      </span>
+                      <span className="text-xs text-muted-foreground">
+                        <span className="font-semibold text-foreground">{prop.leads}</span> interessados
+                      </span>
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
                     </div>
 
                     {/* Actions */}
@@ -238,12 +339,21 @@ const MyPropertiesPage = () => {
                         </Button>
                       )}
                     </div>
+<<<<<<< HEAD
                   </motion.div>
               );
             })}
           </AnimatePresence>
           </div>
         )}
+=======
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </div>
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
       </div>
     </DashboardShell>
   );

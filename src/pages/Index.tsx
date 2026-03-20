@@ -1,7 +1,10 @@
 import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
+<<<<<<< HEAD
 import NewsFeed from "@/components/NewsFeed";
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 import BottomNav from "@/components/BottomNav";
 import BannerCarousel from "@/components/BannerCarousel";
 import PropertySearchBar, { SearchFilters } from "@/components/PropertySearchBar";
@@ -9,8 +12,11 @@ import PropertyCardFull from "@/components/PropertyCardFull";
 import { useFavoritesContext } from "@/contexts/FavoritesContext";
 import SectionHeader from "@/components/SectionHeader";
 import NeighborhoodGrid from "@/components/NeighborhoodGrid";
+<<<<<<< HEAD
 import { supabase } from "@/integrations/supabase/client";
 import { useEffect } from "react";
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 
 import banner1 from "@/assets/banner-1.jpg";
 import banner2 from "@/assets/banner-2.jpg";
@@ -190,6 +196,7 @@ const HorizontalScroll = ({
   );
 };
 
+<<<<<<< HEAD
 interface DBProperty {
   id: string;
   title: string;
@@ -209,6 +216,10 @@ const Index = () => {
   const { isFavorite, toggleFavorite } = useFavoritesContext();
   const [properties, setProperties] = useState<DBProperty[]>([]);
   const [loading, setLoading] = useState(true);
+=======
+const Index = () => {
+  const { isFavorite, toggleFavorite } = useFavoritesContext();
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
   const [filters, setFilters] = useState<SearchFilters>({
     mode: "comprar",
     neighborhood: "Todos",
@@ -216,6 +227,7 @@ const Index = () => {
     query: "",
   });
 
+<<<<<<< HEAD
   const fetchProperties = async () => {
     try {
       const { data, error } = await supabase
@@ -275,12 +287,20 @@ const Index = () => {
     parking: p.parking_spaces || 0,
     premium: p.status === "premium",
   });
+=======
+  const featured = allProperties.filter((p) => p.featured);
+  const recent = allProperties.filter((p) => p.recent);
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 
   return (
     <div className="min-h-svh bg-background">
       <Header />
 
+<<<<<<< HEAD
       <main className="pt-16 pb-24">
+=======
+      <main className="pb-24">
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
         {/* Banner Carousel */}
         <section className="px-4 pt-4">
           <BannerCarousel slides={bannerSlides} />
@@ -295,6 +315,7 @@ const Index = () => {
         <section className="mt-8 px-4">
           <SectionHeader
             title="Destaques"
+<<<<<<< HEAD
             subtitle="Imóveis selecionados pelo Clube Aqui Tem Imóveis"
             action="Ver todos"
           />
@@ -316,6 +337,19 @@ const Index = () => {
             ) : (
               <p className="text-sm text-muted-foreground">Nenhum destaque no momento.</p>
             )}
+=======
+            subtitle="Imóveis selecionados pelo Clube"
+            action="Ver todos"
+          />
+          <div className="mt-4">
+            <HorizontalScroll>
+              {featured.map((p, i) => (
+                <div key={`feat-${i}`} className="w-[280px] shrink-0 snap-start md:w-[320px]">
+                  <PropertyCardFull {...p} liked={isFavorite(p.id)} onFavoriteToggle={() => toggleFavorite(p.id)} />
+                </div>
+              ))}
+            </HorizontalScroll>
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
           </div>
         </section>
 
@@ -326,6 +360,7 @@ const Index = () => {
             subtitle="Novos imóveis em Nova Iguaçu"
             action="Ver todos"
           />
+<<<<<<< HEAD
           <div className="mt-4">
             {loading ? (
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -353,6 +388,15 @@ const Index = () => {
         {/* Dynamic News Feed */}
         <NewsFeed />
 
+=======
+          <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {recent.map((p, i) => (
+              <PropertyCardFull key={`recent-${i}`} {...p} liked={isFavorite(p.id)} onFavoriteToggle={() => toggleFavorite(p.id)} />
+            ))}
+          </div>
+        </section>
+
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
         {/* Neighborhoods */}
         <section className="mt-10 px-4">
           <SectionHeader

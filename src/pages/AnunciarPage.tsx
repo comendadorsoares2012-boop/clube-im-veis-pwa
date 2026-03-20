@@ -9,7 +9,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+<<<<<<< HEAD
 import { supabase } from "@/integrations/supabase/client";
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
 import PhotoUpload, { type PhotoItem } from "@/components/PhotoUpload";
@@ -31,7 +34,10 @@ const AnunciarPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
 
+<<<<<<< HEAD
   const [title, setTitle] = useState("");
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
   const [purpose, setPurpose] = useState<"sale" | "rent">("sale");
   const [propertyType, setPropertyType] = useState("");
   const [neighborhood, setNeighborhood] = useState("");
@@ -43,6 +49,7 @@ const AnunciarPage = () => {
   const [description, setDescription] = useState("");
   const [photos, setPhotos] = useState<PhotoItem[]>([]);
   const [submitting, setSubmitting] = useState(false);
+<<<<<<< HEAD
   const [maxPhotos, setMaxPhotos] = useState(5); // Default to basic
 
   useState(() => {
@@ -61,6 +68,8 @@ const AnunciarPage = () => {
     };
     checkPlan();
   });
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 
 
 
@@ -72,11 +81,16 @@ const AnunciarPage = () => {
       navigate("/login");
       return;
     }
+<<<<<<< HEAD
     if (!title || !propertyType || !neighborhood || !price) {
+=======
+    if (!propertyType || !neighborhood || !price) {
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
       toast.error("Preencha todos os campos obrigatórios.");
       return;
     }
     setSubmitting(true);
+<<<<<<< HEAD
 
     try {
       // 1. Insert property
@@ -138,6 +152,13 @@ const AnunciarPage = () => {
     } finally {
       setSubmitting(false);
     }
+=======
+    // Simulate submission
+    await new Promise((r) => setTimeout(r, 1500));
+    setSubmitting(false);
+    toast.success("Imóvel cadastrado com sucesso! Seu anúncio ficará gratuito por 7 dias.");
+    navigate("/");
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
   };
 
   return (
@@ -158,6 +179,7 @@ const AnunciarPage = () => {
         </motion.div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
+<<<<<<< HEAD
           {/* Title */}
           <div className="space-y-2">
             <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -171,6 +193,8 @@ const AnunciarPage = () => {
             />
           </div>
 
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
           {/* Purpose */}
           <div className="space-y-2">
             <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -331,7 +355,11 @@ const AnunciarPage = () => {
           </div>
 
           {/* Photos */}
+<<<<<<< HEAD
           <PhotoUpload photos={photos} onChange={setPhotos} max={maxPhotos} />
+=======
+          <PhotoUpload photos={photos} onChange={setPhotos} max={10} />
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 
           {/* Submit */}
           <Button

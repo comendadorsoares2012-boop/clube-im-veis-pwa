@@ -6,8 +6,12 @@ import PropertyCardFull from "@/components/PropertyCardFull";
 import { useFavoritesContext } from "@/contexts/FavoritesContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
+<<<<<<< HEAD
 import { useNavigate, useLocation } from "react-router-dom";
 import DashboardShell from "@/components/dashboard/DashboardShell";
+=======
+import { useNavigate } from "react-router-dom";
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
@@ -30,8 +34,11 @@ const FavoritosPage = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const { favoriteIds, toggleFavorite, isFavorite, loading } = useFavoritesContext();
+<<<<<<< HEAD
   const location = useLocation();
   const isDashboard = location.pathname.startsWith("/dashboard");
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 
   if (!user) {
     return (
@@ -58,9 +65,16 @@ const FavoritosPage = () => {
     .map((id) => (propertyMap[id] ? { id, ...propertyMap[id] } : null))
     .filter(Boolean);
 
+<<<<<<< HEAD
   const content = (
     <main className={`mx-auto max-w-5xl px-4 ${isDashboard ? "pt-0" : "pt-20"}`}>
       {!isDashboard && (
+=======
+  return (
+    <div className="min-h-svh bg-background pb-24">
+      <Header />
+      <main className="mx-auto max-w-5xl px-4 pt-20">
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
         <h1 className="mb-6 text-xl font-bold tracking-display">
           Meus Favoritos
           {favoriteProperties.length > 0 && (
@@ -69,6 +83,7 @@ const FavoritosPage = () => {
             </span>
           )}
         </h1>
+<<<<<<< HEAD
       )}
 
       {loading ? (
@@ -133,6 +148,57 @@ const FavoritosPage = () => {
     <div className="min-h-svh bg-background pb-24">
       <Header />
       {content}
+=======
+
+        {loading ? (
+          <div className="flex justify-center py-20">
+            <div className="h-6 w-6 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+          </div>
+        ) : favoriteProperties.length === 0 ? (
+          <div className="flex flex-col items-center gap-3 py-20 text-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-muted">
+              <Heart className="h-7 w-7 text-muted-foreground" />
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Você ainda não salvou nenhum imóvel.
+            </p>
+            <Button variant="outline" onClick={() => navigate("/buscar")} className="mt-2 rounded-xl">
+              Explorar Imóveis
+            </Button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <AnimatePresence mode="popLayout">
+              {favoriteProperties.map((prop: any) => (
+                <motion.div
+                  key={prop.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                >
+                  <PropertyCardFull
+                    id={prop.id}
+                    image={prop.image}
+                    type={prop.type}
+                    propertyType={prop.propertyType}
+                    price={prop.price}
+                    address={prop.address}
+                    neighborhood={prop.neighborhood}
+                    beds={prop.beds}
+                    baths={prop.baths}
+                    area={prop.area}
+                    liked={true}
+                    onFavoriteToggle={() => toggleFavorite(prop.id)}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+        )}
+      </main>
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
       <BottomNav />
     </div>
   );

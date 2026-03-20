@@ -11,5 +11,11 @@ const PlaceholderDashboardPage = ({ title }: { title: string }) => (
   </DashboardShell>
 );
 
+<<<<<<< HEAD
 // No placeholders needed here as they are now implemented.
 export const EmptyPlaceholder = () => <PlaceholderDashboardPage title="Em Breve" />;
+=======
+export const LeadsPage = () => <PlaceholderDashboardPage title="Interessados" />;
+export const PlansPage = () => <PlaceholderDashboardPage title="Planos e Pagamentos" />;
+export const DashboardProfilePage = () => <PlaceholderDashboardPage title="Perfil" />;
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3

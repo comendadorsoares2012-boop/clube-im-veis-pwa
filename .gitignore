@@ -22,6 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+<<<<<<< HEAD
 
 # Segredos e credenciais (NÃO commitar)
 .env
@@ -30,3 +31,5 @@ dist-ssr
 
 # Railway CLI cache
 .railway/
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3

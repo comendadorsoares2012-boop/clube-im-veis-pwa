@@ -56,7 +56,11 @@ const PropertyCardFull = ({
       )}
 
       {/* Image */}
+<<<<<<< HEAD
       <div className="relative aspect-video overflow-hidden rounded-xl bg-secondary">
+=======
+      <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-secondary">
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
         <img
           src={image}
           alt={address}

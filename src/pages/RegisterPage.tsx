@@ -13,8 +13,11 @@ const userTypes: { value: UserType; label: string; desc: string; icon: typeof Ho
   { value: "seeker", label: "Procurando", desc: "Estou buscando um imóvel", icon: Search },
 ];
 
+<<<<<<< HEAD
 import logo from "@/assets/logo.png";
 
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 const RegisterPage = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState<1 | 2>(1);
@@ -65,9 +68,17 @@ const RegisterPage = () => {
       <div className="flex flex-1 flex-col items-center justify-center px-6 py-12">
         {/* Logo */}
         <div className="mb-8 flex flex-col items-center">
+<<<<<<< HEAD
           <img src={logo} alt="Clube Aqui Tem Imóveis" className="h-16 w-16 object-contain" />
           <h1 className="mt-4 text-xl font-bold tracking-display">
             Clube Aqui Tem Imóveis
+=======
+          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-foreground">
+            <span className="text-2xl font-bold text-primary">C</span>
+          </div>
+          <h1 className="mt-3 text-xl font-bold tracking-display">
+            Criar Conta
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             {step === 1 ? "Qual é o seu perfil?" : "Preencha seus dados"}

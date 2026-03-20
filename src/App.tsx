@@ -17,14 +17,19 @@ import FavoritosPage from "./pages/FavoritosPage.tsx";
 import { PerfilPage } from "./pages/PlaceholderPages.tsx";
 import DashboardOverview from "./pages/dashboard/DashboardOverview.tsx";
 import MyPropertiesPage from "./pages/dashboard/MyPropertiesPage.tsx";
+<<<<<<< HEAD
 import DashboardProfilePage from "./pages/dashboard/DashboardProfilePage.tsx";
 import UserPlansPage from "./pages/dashboard/UserPlansPage.tsx";
 import LeadsPage from "./pages/dashboard/LeadsPage.tsx";
+=======
+import { LeadsPage, PlansPage, DashboardProfilePage } from "./pages/dashboard/DashboardPlaceholders.tsx";
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 import AgentDashboard from "./pages/agent/AgentDashboard.tsx";
 import AgentListings from "./pages/agent/AgentListings.tsx";
 import AgentLeads from "./pages/agent/AgentLeads.tsx";
 import AgentReports from "./pages/agent/AgentReports.tsx";
 import { AgentPlans, AgentProfile } from "./pages/agent/AgentPlaceholders.tsx";
+<<<<<<< HEAD
 import UserDashboard from "./pages/dashboard/UserDashboard.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import AdminLogin from "./pages/admin/AdminLogin.tsx";
@@ -34,6 +39,11 @@ import AdminProperties from "./pages/admin/AdminProperties.tsx";
 import AdminFinance from "./pages/admin/AdminFinance.tsx";
 import AdminLeads from "./pages/admin/AdminLeads.tsx";
 import AdminPlans from "./pages/admin/AdminPlans.tsx";const queryClient = new QueryClient();
+=======
+import NotFound from "./pages/NotFound.tsx";
+
+const queryClient = new QueryClient();
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -57,9 +67,13 @@ const App = () => (
             <Route path="/dashboard" element={<DashboardOverview />} />
             <Route path="/dashboard/imoveis" element={<MyPropertiesPage />} />
             <Route path="/dashboard/leads" element={<LeadsPage />} />
+<<<<<<< HEAD
             <Route path="/dashboard/planos" element={<UserPlansPage />} />
             <Route path="/dashboard/usuario" element={<UserDashboard />} />
             <Route path="/dashboard/favoritos" element={<FavoritosPage />} />
+=======
+            <Route path="/dashboard/planos" element={<PlansPage />} />
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
             <Route path="/dashboard/perfil" element={<DashboardProfilePage />} />
             <Route path="/agente" element={<AgentDashboard />} />
             <Route path="/agente/anuncios" element={<AgentListings />} />
@@ -67,6 +81,7 @@ const App = () => (
             <Route path="/agente/relatorios" element={<AgentReports />} />
             <Route path="/agente/planos" element={<AgentPlans />} />
             <Route path="/agente/perfil" element={<AgentProfile />} />
+<<<<<<< HEAD
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/usuarios" element={<AdminUsers />} />
@@ -74,6 +89,8 @@ const App = () => (
             <Route path="/admin/financeiro" element={<AdminFinance />} />
             <Route path="/admin/leads" element={<AdminLeads />} />
             <Route path="/admin/planos" element={<AdminPlans />} />
+=======
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

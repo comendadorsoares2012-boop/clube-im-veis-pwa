@@ -51,7 +51,11 @@ const AgentReports = () => {
   const maxNeighborhood = Math.max(...bestNeighborhoods.map((n) => n.value));
 
   return (
+<<<<<<< HEAD
     <DashboardShell title="Relatórios" variant="owner">
+=======
+    <DashboardShell title="Relatórios" variant="agent">
+>>>>>>> 0f81bcce03a9fb9ad95633cd4a8d643a5cca32b3
       <div className="mx-auto max-w-5xl space-y-6">
         {/* Leads per month */}
         <motion.div
