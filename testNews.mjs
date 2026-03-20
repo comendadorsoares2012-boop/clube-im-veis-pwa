@@ -1,0 +1,21 @@
+import { createClient } from '@supabase/supabase-js';
+
+const SUPABASE_URL = "https://frhlkmivnjtcdidyvfxf.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZyaGxrbWl2bmp0Y2RpZHl2ZnhmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTI4MjAsImV4cCI6MjA4NzM4ODgyMH0.Wte0Z5G_T-0VSpfZzSHv8axVYQ7yzRLYQcHNgqxPwB4";
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+async function test() {
+  try {
+    const { data, error } = await supabase.functions.invoke('get-rio-news');
+    if (error) {
+        const body = await error.context.json();
+        console.log("ERROR BODY:", body);
+    }
+    console.log("DATA:", data);
+  } catch (e) {
+    console.log("CATCH:", e.message);
+  }
+}
+
+test();
